@@ -8,6 +8,9 @@ hasCJKLanguage = true
 # 版权信息（支持 Markdown）
 copyright = "[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)"
 
+# 发布目录
+publishDir = "docs"
+
 # 主题选择
 theme = "meme"
 

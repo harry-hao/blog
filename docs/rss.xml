@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>程序员笔记</title>
+        <link>https://harry-hao.github.io/blog/</link>
+        <description></description>
+        <generator>Hugo 0.62.2 https://gohugo.io/</generator>
+        
+            <language>zh-CN</language>
+        
+        
+            <managingEditor>harry-hao@outlook.com (郝羽)</managingEditor>
+        
+        
+            <webMaster>harry-hao@outlook.com (郝羽)</webMaster>
+        
+        
+            <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+        
+        <lastBuildDate>Tue, 30 Jun 2020 13:58:14 &#43;0800</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
+        
+        
+            <item>
+                <title>模型的边界</title>
+                <link>https://harry-hao.github.io/blog/posts/2020-06-29_boundary-of-models/</link>
+                <guid isPermaLink="true">https://harry-hao.github.io/blog/posts/2020-06-29_boundary-of-models/</guid>
+                <pubDate>Tue, 30 Jun 2020 10:00:00 &#43;0800</pubDate>
+                
+                    <author>harry-hao@outlook.com (郝羽)</author>
+                
+                <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+                
+                    <description>&lt;blockquote&gt;
+&lt;p&gt;本文基于多模块系统讨论，不适用于单模块系统。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;特定的模型只需要关注特定的业务问题，因此应该呆在模块内。但是现实中，有时模型会穿越边界进入另一个模块，并带来问题。&lt;/p&gt;
+&lt;p&gt;假设我们在开发一个网上商店，首先，为了实现身份认证，我们创建了User类，用于认证身份，其API形如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;UserController&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;authenticate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此时，直接返回User已经埋下了问题，我们继续看。&lt;/p&gt;
+&lt;p&gt;为了让用户能够买东西，我们需要向User（调用身份认证API获得）添加了充值和结算功能。&lt;/p&gt;
+&lt;p&gt;为了提高购买体验，我们再次向User添加一些统计功能。&lt;/p&gt;
+&lt;p&gt;接下来，我们发现模型都是通用的依赖，将其放入一个公共模块，称为模型模块给业务模块直接使用。&lt;/p&gt;
+&lt;p&gt;随着开发，更多的功能被加到User，每次都需要修改认证服务（User是认证服务提供的），这很不方便，于是改为各个模块直接访问数据库，并继续添加功能直到出现下面的问题。&lt;/p&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;问题1 修改Schema困难&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当我们需要删除或者修改User的功能时，我们发现必须先更新所有依赖模块后才能更新，否则未更新的模块无法存取相应的表。然而，由于模型是一个公共模块，我们需要查看每个业务模块后，才能确定修改计划。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题2 安全隐患&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;每个依赖User的模块都能看到User全部数据。这可能出现安全漏洞，比如，某个模块把User的密码打印到日志里。为此，向模型添加敏感信息时，需要检查所有依赖模块的代码，防止泄漏。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题3 事故放大&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;模型一般都需要持久化，这些数据存储在一起的，可能造成事故的放大。比如，一个模块异常删除了User数据，那么所有使用User的功能受到到影响。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题4 意外修改&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;修改模型时，如果不注意本模块是否拥有相关部分，很可能会破坏其他模块。并且，有时候这种修改是基于条件触发的，使得这种问题较难排查。然后，即使本模块拥有修改的部分，也不能保证没有其他模块依赖。
+因此，修改模型时，需要先分析修改范围是否属于本模块，之后再查看所有模块是否依赖现有实现。&lt;/p&gt;
+&lt;p&gt;由于以上问题，我们对模型开始只加不删，轻易不动已有功能...&lt;/p&gt;
+&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;
+&lt;p&gt;究其原因，我们发现根源在于认证API返回了User。这使得模型穿越边界变成可能（依赖认证模块并直接使用User）。之后，公共模块的做法降低了穿越的难度（依赖该公共模块）。最后，共享数据库彻底卸下了边界，使得模型能够被任意模块存取。&lt;/p&gt;
+&lt;p&gt;三步操作后，模型成了各个模块的共享内核，任何对内核的改动都会变得困难。并且这种共享内核，如果由多个团队维护，很可能变成没人维护任其发展。&lt;/p&gt;
+&lt;h2 id=&#34;解决&#34;&gt;解决&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;overlapped-models.png&#34; alt=&#34;overlapped-models.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;理想的解决方案是恢复模型的边界。每个模块应当有专门的关注点，其模型亦如此。&lt;/p&gt;
+&lt;p&gt;首先，可以逐步将User拆分到各自的模块中。过程中如果发现拆不开的，有两种办法，如果是模块划分问题，可以调整模块划分。如果不是，则需要选择一个模块拥有该模型，在另一个模块的模型中通过引用该模型ID或内联（复制）所需的部分。&lt;/p&gt;
+&lt;p&gt;拆分完成后，检查提供API的地方，确保模型没有出现在请求响应中，如果有则需要更新API。&lt;/p&gt;
+&lt;p&gt;最后，消费外部API时，确保外部模型没有直接进入，如果有则先将其翻译成本地模型。这一步是一种防御机制，用来防御外部API变化造成破坏。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">软件开发</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/model/">model</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/design/">design</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/skill/">skill</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+    </channel>
+</rss>

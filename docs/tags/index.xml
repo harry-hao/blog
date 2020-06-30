@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 程序员笔记</title>
+    <link>https://harry-hao.github.io/blog/tags/</link>
+    <description>Recent content in Tags on 程序员笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>harry-hao@outlook.com (郝羽)</managingEditor>
+    <webMaster>harry-hao@outlook.com (郝羽)</webMaster>
+    <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Tue, 30 Jun 2020 10:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://harry-hao.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>design</title>
+      <link>https://harry-hao.github.io/blog/tags/design/</link>
+      <pubDate>Tue, 30 Jun 2020 10:00:00 +0800</pubDate>
+      <author>harry-hao@outlook.com (郝羽)</author>
+      <guid>https://harry-hao.github.io/blog/tags/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>model</title>
+      <link>https://harry-hao.github.io/blog/tags/model/</link>
+      <pubDate>Tue, 30 Jun 2020 10:00:00 +0800</pubDate>
+      <author>harry-hao@outlook.com (郝羽)</author>
+      <guid>https://harry-hao.github.io/blog/tags/model/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>skill</title>
+      <link>https://harry-hao.github.io/blog/tags/skill/</link>
+      <pubDate>Tue, 30 Jun 2020 10:00:00 +0800</pubDate>
+      <author>harry-hao@outlook.com (郝羽)</author>
+      <guid>https://harry-hao.github.io/blog/tags/skill/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 程序员笔记</title>
+    <link>https://harry-hao.github.io/blog/categories/</link>
+    <description>Recent content in Categories on 程序员笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>harry-hao@outlook.com (郝羽)</managingEditor>
+    <webMaster>harry-hao@outlook.com (郝羽)</webMaster>
+    <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Tue, 30 Jun 2020 10:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://harry-hao.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>软件开发</title>
+      <link>https://harry-hao.github.io/blog/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Tue, 30 Jun 2020 10:00:00 +0800</pubDate>
+      <author>harry-hao@outlook.com (郝羽)</author>
+      <guid>https://harry-hao.github.io/blog/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
