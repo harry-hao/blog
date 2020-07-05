@@ -95,15 +95,15 @@ uglyURLs = false
 # 作者信息
 [author]
     # 名字
-    name = "郝羽"
+    name = ""
     # 邮箱
-    email = "harry-hao@outlook.com"
+    #email = ""
     # 座右铭或简介
-    motto = "工作使我快乐"
+    #motto = "工作使我快乐"
     # 头像
     #avatar = "/icons/apple-touch-icon.png"
     # 网站（默认值：baseURL）
-    website = "https://github.com/harry-hao"
+    #website = "https://github.com/harry-hao"
     # 推特
     #twitter = "reuixiy"
 
@@ -713,7 +713,7 @@ uglyURLs = false
     publishedDateIcon = "calendar-alt"
 
     # 是否显示修改时间
-    displayModifiedDate = true
+    displayModifiedDate = false
     # 修改时间的图标
     modifiedDateIcon = "calendar-check"
 
@@ -740,7 +740,7 @@ uglyURLs = false
     readingTimeIcon = "clock"
 
     # 是否显示不蒜子页面浏览量
-    displayBusuanziPagePV = false
+    displayBusuanziPagePV = true
     # 不蒜子页面浏览量的图标
     busuanziPagePVIcon = "eye"
     # 说明：仅在生产环境（production）下渲染
@@ -1170,7 +1170,7 @@ uglyURLs = false
     enableFooter = false
 
     # 是否在首页显示
-    displayFooterInHome = false
+    displayFooterInHome = true
 
     # 是否显示版权符号（©）
     displayCopyrightSymbol = true
@@ -1179,7 +1179,8 @@ uglyURLs = false
     displaySiteCreatedYear = true
 
     # 年份与作者之间的图标，留空（""）则无
-    iconBetweenYearAndAuthor = "heart"
+    iconBetweenYearAndAuthor = ""
+
     # 图标颜色
     iconColor = "#f06292"
     # 是否开启图标的跳动效果

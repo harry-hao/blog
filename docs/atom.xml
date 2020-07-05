@@ -4,16 +4,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">程序员笔记</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-06-30T13:58:14&#43;08:00</updated>
+    <updated>2020-07-05T21:54:50&#43;08:00</updated>
     <id>https://harry-hao.github.io/blog/</id>
     <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/" />
     <link rel="self" type="application/atom&#43;xml" href="https://harry-hao.github.io/blog/atom.xml" />
-    <author>
-            <name>郝羽</name>
-            <uri>https://harry-hao.github.io/</uri>
-            
-                <email>harry-hao@outlook.com</email>
-            </author>
+    
     <rights>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</rights>
     <generator uri="https://gohugo.io/" version="0.62.2">Hugo</generator>
         <entry>
@@ -23,9 +18,7 @@
             <updated>2020-06-30T13:37:23&#43;08:00</updated>
             <published>2020-06-30T10:00:00&#43;08:00</published>
             <author>
-                    <name>郝羽</name>
-                    <uri>https://github.com/harry-hao</uri>
-                    <email>harry-hao@outlook.com</email>
+                    <uri>https://harry-hao.github.io/blog/</uri>
                     </author>
             <rights>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</rights><summary type="html">模型是对业务问题的抽象和解决方案。模块是对业务问题的分解，是模型的边界。</summary>
             
