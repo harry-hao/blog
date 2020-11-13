@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
         
-        <lastBuildDate>Fri, 13 Nov 2020 14:49:33 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 13 Nov 2020 14:56:45 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
         
@@ -137,7 +137,7 @@
 &lt;td&gt;&lt;code&gt;AS&lt;/code&gt;信任&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;Client Credentials&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;Client Credentials&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Client Credentials&lt;/code&gt;+&lt;code&gt;PKCE&lt;/code&gt;/&lt;code&gt;CSRF Token&lt;/code&gt;+检查重定向地址&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Client Credentials&lt;/code&gt;+&lt;code&gt;PKCE&lt;/code&gt;+检查重定向地址&lt;/td&gt;
 &lt;td&gt;N/A&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;

@@ -107,7 +107,7 @@ OAuth 2.0的[角色](https://tools.ietf.org/html/rfc6749#section-1.1)划分明�
 |------|---|---|---|---|
 |`RO`信任`C`|  用户    | 管理员   | 用户    |   用户   |
 |`C`信任`AS`| `https` | `https` | `https` | `https` |
-|`AS`信任`C`| `Client Credentials`|`Client Credentials`|`Client Credentials`+`PKCE`/`CSRF Token`+检查重定向地址| N/A |
+|`AS`信任`C`| `Client Credentials`|`Client Credentials`|`Client Credentials`+`PKCE`+检查重定向地址| N/A |
 |`C`信任`RS`| `https` | `https` | `https`+`CSRF Token` | `https`+`CSRF Token` |
 |`RS`信任`C`| `Access Token`|`Access Token`|`Access Token`| N/A |
 
