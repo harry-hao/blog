@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
         
-        <lastBuildDate>Fri, 13 Nov 2020 14:56:45 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 13 Nov 2020 21:17:34 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
         
@@ -32,8 +32,7 @@
                 
                 <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
                 
-                    <description>&lt;h1 id=&#34;oauth20&#34;&gt;OAuth2.0&lt;/h1&gt;
-&lt;p&gt;近日由于工作需要，学习了一下OAuth 2.0。&lt;/p&gt;
+                    <description>&lt;p&gt;近日由于工作需要，学习了一下OAuth 2.0。&lt;/p&gt;
 &lt;p&gt;安全问题，离不开信任关系：&lt;/p&gt;
 &lt;p&gt;举个例子，我们都知道银行卡的密码可以在柜员机输入。这是因为我们信任柜员机。&lt;/p&gt;
 &lt;p&gt;再举个例子，你去便利店买东西，用手机支付时，都会提示你输入密码。因为支付服务信任的是你，而不是你的手机。&lt;/p&gt;
@@ -69,7 +68,7 @@
 &lt;p&gt;&lt;code&gt;Resource Owner Password Credentials Grant&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./password-grant.jpg&#34; alt=&#34;密码授权&#34;&gt;&lt;/p&gt;
 &lt;p&gt;我们称这个授权流程为密码授权。&lt;/p&gt;
-&lt;p&gt;⚠️ 这个流程中，密码直接交给Client，有可能被泄漏，（[密码泄漏](&lt;a href=&#34;https://tools.ietf.org/html/rfc6819#section-4.4.3&#34;&gt;https://tools.ietf.org/html/rfc6819#section-4.4.3&lt;/a&gt;。
+&lt;p&gt;⚠️ 这个流程中，密码直接交给Client，有可能被泄漏，（&lt;a href=&#34;https://tools.ietf.org/html/rfc6819#section-4.4.3&#34;&gt;密码泄漏&lt;/a&gt;。
 因此，需要注意采用安全的传输方式，不使用明文传输密码，打印日志时进行脱敏等措施。&lt;/p&gt;
 &lt;p&gt;密码授权仅适用于不能使用其他授权的时候（比如不支持重定向）。&lt;/p&gt;
 &lt;/li&gt;
@@ -162,7 +161,10 @@
 &lt;li&gt;&lt;sub&gt;AS = Authorization Server&lt;/sub&gt;&lt;/li&gt;
 &lt;li&gt;&lt;sub&gt;RS = Resource Server&lt;/sub&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;安全问题是一场持续进行的竞赛，没有一劳永逸的方案。并且，用户安全意识也非常重要，技术和机器无法解决全部问题。&lt;/p&gt;
+&lt;p&gt;安全问题是一场持续进行的竞赛，没有一劳永逸的方案。并且，人的安全意识也非常重要，技术和机器无法解决全部问题。&lt;/p&gt;
+&lt;p&gt;附上笑话一枚：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://imgs.xkcd.com/comics/exploits_of_a_mom.png&#34; alt=&#34;exploits_of_a_mom&#34;&gt;
+&lt;sub&gt;图片来自：https://xkcd.com/327/&lt;/sub&gt;&lt;/p&gt;
 </description>
                 
                 

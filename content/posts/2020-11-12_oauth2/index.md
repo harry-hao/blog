@@ -10,8 +10,6 @@ tags:
 draft: false
 ---
 
-# OAuth2.0
-
 近日由于工作需要，学习了一下OAuth 2.0。
 
 安全问题，离不开信任关系：
@@ -55,7 +53,7 @@ OAuth 2.0的[角色](https://tools.ietf.org/html/rfc6749#section-1.1)划分明�
 
     我们称这个授权流程为密码授权。
 
-    ⚠️ 这个流程中，密码直接交给Client，有可能被泄漏，（[密码泄漏](https://tools.ietf.org/html/rfc6819#section-4.4.3。
+    ⚠️ 这个流程中，密码直接交给Client，有可能被泄漏，（[密码泄漏](https://tools.ietf.org/html/rfc6819#section-4.4.3)。
     因此，需要注意采用安全的传输方式，不使用明文传输密码，打印日志时进行脱敏等措施。
     
     密码授权仅适用于不能使用其他授权的时候（比如不支持重定向）。
@@ -116,4 +114,9 @@ OAuth 2.0的[角色](https://tools.ietf.org/html/rfc6749#section-1.1)划分明�
 - <sub>AS = Authorization Server</sub>
 - <sub>RS = Resource Server</sub>
 
-安全问题是一场持续进行的竞赛，没有一劳永逸的方案。并且，用户安全意识也非常重要，技术和机器无法解决全部问题。
+安全问题是一场持续进行的竞赛，没有一劳永逸的方案。并且，人的安全意识也非常重要，技术和机器无法解决全部问题。
+
+附上笑话一枚：
+
+![exploits_of_a_mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+<sub>图片来自：https://xkcd.com/327/</sub>
