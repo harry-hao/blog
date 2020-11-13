@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">程序员笔记</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-11-13T21:27:18&#43;08:00</updated>
+    <updated>2020-11-13T21:30:34&#43;08:00</updated>
     <id>https://harry-hao.github.io/blog/</id>
     <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/" />
     <link rel="self" type="application/atom&#43;xml" href="https://harry-hao.github.io/blog/atom.xml" />
@@ -15,7 +15,7 @@
             <title type="text">了解OAuth2.0</title>
             <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/" />
             <id>https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/</id>
-            <updated>2020-11-13T21:27:11&#43;08:00</updated>
+            <updated>2020-11-13T21:30:14&#43;08:00</updated>
             <published>2020-11-12T00:00:00&#43;00:00</published>
             <author>
                     <uri>https://harry-hao.github.io/blog/</uri>
@@ -28,7 +28,7 @@
 &lt;p&gt;再举个例子，你去便利店买东西，用手机支付时，都会提示你输入密码。因为支付服务信任的是你，而不是你的手机。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;OAuth 2.0是一种认证授权工业标准。其目标为多种应用（Web、桌面程序、手机、只能设备等）提供简单易安全的认证授权方法。
-&lt;cite&gt; &lt;a href=&#34;https://oauth.net/2/&#34;&gt;https://oauth.net/2/&lt;/a&gt; &lt;/cite&gt;&lt;/p&gt;
+&lt;cite&gt;&lt;a&gt;&lt;a href=&#34;https://oauth.net/2/%3C/a%3E%3C/cite%3E&#34;&gt;https://oauth.net/2/&amp;lt;/a&amp;gt;&amp;lt;/cite&amp;gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;我们从角色和授权流程两个方面入手，来看看OAuth 2.0。&lt;/p&gt;
 &lt;h3 id=&#34;角色&#34;&gt;角色&lt;/h3&gt;
