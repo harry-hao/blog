@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
         
-        <lastBuildDate>Fri, 13 Nov 2020 21:30:34 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sat, 14 Nov 2020 00:05:07 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
         
@@ -32,14 +32,13 @@
                 
                 <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
                 
-                    <description>&lt;p&gt;近日由于工作需要，学习了一下OAuth 2.0。&lt;/p&gt;
+                    <description>&lt;blockquote&gt;
+&lt;p&gt;OAuth 2.0是一种认证授权工业标准，为多种应用（Web、桌面程序、手机、只能设备等）提供简单易安全的认证授权方法。
+&lt;cite&gt;&lt;a&gt;&lt;a href=&#34;https://oauth.net/2/%3C/a%3E%3C/cite%3E&#34;&gt;https://oauth.net/2/&amp;lt;/a&amp;gt;&amp;lt;/cite&amp;gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;安全问题，离不开信任关系：&lt;/p&gt;
 &lt;p&gt;举个例子，我们都知道银行卡的密码可以在柜员机输入。这是因为我们信任柜员机。&lt;/p&gt;
 &lt;p&gt;再举个例子，你去便利店买东西，用手机支付时，都会提示你输入密码。因为支付服务信任的是你，而不是你的手机。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OAuth 2.0是一种认证授权工业标准。其目标为多种应用（Web、桌面程序、手机、只能设备等）提供简单易安全的认证授权方法。
-&lt;cite&gt;&lt;a&gt;&lt;a href=&#34;https://oauth.net/2/%3C/a%3E%3C/cite%3E&#34;&gt;https://oauth.net/2/&amp;lt;/a&amp;gt;&amp;lt;/cite&amp;gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;p&gt;我们从角色和授权流程两个方面入手，来看看OAuth 2.0。&lt;/p&gt;
 &lt;h3 id=&#34;角色&#34;&gt;角色&lt;/h3&gt;
 &lt;ol&gt;
@@ -187,7 +186,7 @@
                                 
                                 
                                 
-                                    <category domain="https://harry-hao.github.io/blog/tags/oauth2.0/">oauth2.0</category>
+                                    <category domain="https://harry-hao.github.io/blog/tags/oauth-2.0/">oauth 2.0</category>
                                 
                             
                                 
