@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">程序员笔记</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-11-14T00:05:07&#43;08:00</updated>
+    <updated>2020-11-14T20:38:40&#43;08:00</updated>
     <id>https://harry-hao.github.io/blog/</id>
     <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/" />
     <link rel="self" type="application/atom&#43;xml" href="https://harry-hao.github.io/blog/atom.xml" />
@@ -15,7 +15,7 @@
             <title type="text">了解OAuth2.0</title>
             <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/" />
             <id>https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/</id>
-            <updated>2020-11-14T00:05:00&#43;08:00</updated>
+            <updated>2020-11-14T20:36:00&#43;08:00</updated>
             <published>2020-11-12T00:00:00&#43;00:00</published>
             <author>
                     <uri>https://harry-hao.github.io/blog/</uri>
@@ -24,7 +24,7 @@
             
                 <content type="html">&lt;blockquote&gt;
 &lt;p&gt;OAuth 2.0是一种认证授权工业标准，为多种应用（Web、桌面程序、手机、只能设备等）提供简单易安全的认证授权方法。
-&lt;cite&gt;&lt;a&gt;&lt;a href=&#34;https://oauth.net/2/%3C/a%3E%3C/cite%3E&#34;&gt;https://oauth.net/2/&amp;lt;/a&amp;gt;&amp;lt;/cite&amp;gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://oauth.net/2/&#34;&gt;https://oauth.net/2/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;安全问题，离不开信任关系：&lt;/p&gt;
 &lt;p&gt;举个例子，我们都知道银行卡的密码可以在柜员机输入。这是因为我们信任柜员机。&lt;/p&gt;
@@ -90,7 +90,7 @@
 &lt;p&gt;&lt;code&gt;Implicit Grant&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./implicit-grant.jpg&#34; alt=&#34;隐式授权&#34;&gt;&lt;/p&gt;
 &lt;p&gt;由于在授权过程中没有验证&lt;code&gt;Client&lt;/code&gt;，我们称其为隐式授权。隐式授权本意是为了减少Client与Authorization Server的交互次数，但由于其安全问题没有好的对策，已经被认为是&lt;strong&gt;禁止&lt;/strong&gt;使用的。应当使用授权码授权。&lt;/p&gt;
-&lt;p&gt;⚠️ 隐式授权会造成&lt;code&gt;Access Token&lt;/code&gt;被泄漏，并且由于&lt;code&gt;Authentication Server&lt;/code&gt;没有验证&lt;code&gt;Client&lt;/code&gt;，无法&lt;a href=&#34;https://tools.ietf.org/html/draft-ietf-oauth-security-topics-16#section-4.9.1.1.2&#34;&gt;限制&lt;code&gt;Access Token&lt;/code&gt;应用范围&lt;/a&gt;。所以，隐式授权是&lt;strong&gt;禁止&lt;/strong&gt;使用的。&lt;/p&gt;
+&lt;p&gt;⚠️ 隐式授权会造成Access Token泄漏，并且由于&lt;code&gt;Authentication Server&lt;/code&gt;没有验证&lt;code&gt;Client&lt;/code&gt;，无法限制&lt;code&gt;Access Token&lt;/code&gt;应用范围&lt;a href=&#34;https://tools.ietf.org/html/draft-ietf-oauth-security-topics-16#section-4.9.1.1.2&#34;&gt;参考&lt;/a&gt;。所以，隐式授权是&lt;strong&gt;禁止&lt;/strong&gt;使用的。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;另外，为了支持交互受限设备，后续又增加了一个&lt;a href=&#34;https://tools.ietf.org/html/rfc8628&#34;&gt;Device Authorization Grant&lt;/a&gt;，本文就不介绍了。&lt;/p&gt;
