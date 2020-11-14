@@ -90,7 +90,7 @@ OAuth 2.0的[角色](https://tools.ietf.org/html/rfc6749#section-1.1)划分明�
 
     由于在授权过程中没有验证`Client`，我们称其为隐式授权。隐式授权本意是为了减少Client与Authorization Server的交互次数，但由于其安全问题没有好的对策，已经被认为是**禁止**使用的。应当使用授权码授权。
 
-    ⚠️ 隐式授权会造成Access Token泄漏，并且由于`Authentication Server`没有验证`Client`，无法限制`Access Token`应用范围[参考](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-16#section-4.9.1.1.2)。所以，隐式授权是**禁止**使用的。
+    ⚠️ 隐式授权会造成Access Token泄漏，并且由于`Authentication Server`没有验证`Client`，无法限制`Access Token`应用范围([Sender-Constrained Access Tokens](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-16#section-4.9.1.1.2))。所以，隐式授权是**禁止**使用的。
 
     
 另外，为了支持交互受限设备，后续又增加了一个[Device Authorization Grant](https://tools.ietf.org/html/rfc8628)，本文就不介绍了。
