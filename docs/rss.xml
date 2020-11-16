@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
         
-        <lastBuildDate>Sat, 14 Nov 2020 20:42:10 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 16 Nov 2020 13:30:14 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
         
@@ -142,8 +142,8 @@
 &lt;td&gt;&lt;code&gt;C&lt;/code&gt;信任&lt;code&gt;RS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;CSRF Token&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;CSRF Token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;RS&lt;/code&gt;信任&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;

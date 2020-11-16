@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">程序员笔记</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-11-14T20:42:10&#43;08:00</updated>
+    <updated>2020-11-16T13:30:14&#43;08:00</updated>
     <id>https://harry-hao.github.io/blog/</id>
     <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/" />
     <link rel="self" type="application/atom&#43;xml" href="https://harry-hao.github.io/blog/atom.xml" />
@@ -15,7 +15,7 @@
             <title type="text">了解OAuth2.0</title>
             <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/" />
             <id>https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/</id>
-            <updated>2020-11-14T20:42:04&#43;08:00</updated>
+            <updated>2020-11-16T13:30:02&#43;08:00</updated>
             <published>2020-11-12T00:00:00&#43;00:00</published>
             <author>
                     <uri>https://harry-hao.github.io/blog/</uri>
@@ -132,8 +132,8 @@
 &lt;td&gt;&lt;code&gt;C&lt;/code&gt;信任&lt;code&gt;RS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;CSRF Token&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;CSRF Token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;RS&lt;/code&gt;信任&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
