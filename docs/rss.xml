@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
         
-        <lastBuildDate>Mon, 16 Nov 2020 13:30:14 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 27 Nov 2020 21:08:34 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
         
@@ -33,7 +33,7 @@
                 <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
                 
                     <description>&lt;blockquote&gt;
-&lt;p&gt;OAuth 2.0是一种认证授权工业标准，为多种应用（Web、桌面程序、手机、只能设备等）提供简单易安全的认证授权方法。
+&lt;p&gt;OAuth 2.0是一种认证授权工业标准，为多种应用（Web、桌面程序、手机、智能设备等）提供简单易安全的认证授权方法。
 &lt;a href=&#34;https://oauth.net/2/&#34;&gt;https://oauth.net/2/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;安全问题，离不开信任关系：&lt;/p&gt;
