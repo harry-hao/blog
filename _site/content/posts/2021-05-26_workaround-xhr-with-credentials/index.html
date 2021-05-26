@@ -1,0 +1,73 @@
+<p>我们在使用SockJS作为传输层时，遇到浏览器对跨域请求报错：</p>
+
+<p><code class="language-plaintext highlighter-rouge">Failed to load resource: Cannot use wildcard in Access-Control-Allow-Origin when credentials flag is true.</code></p>
+
+<p>搜索发现，浏览器要求当XHR请求指定了<code class="language-plaintext highlighter-rouge">withCredentials</code>等于<code class="language-plaintext highlighter-rouge">true</code>时，</p>
+
+<p>而服务端返回的<code class="language-plaintext highlighter-rouge">Access-Control-Allow-Orgin</code>必须是精确匹配。否则不允许页面获取该资源。</p>
+
+<p>这里的精确匹配是指协议、域名、端口全部都匹配（在服务端返回的<code class="language-plaintext highlighter-rouge">Access-Control-Allow-Orgin</code>中）。</p>
+
+<h2 id="xmlhttprequestwithcredentials">XMLHttpRequest.withCredentials</h2>
+
+<p>这个选项默认为<code class="language-plaintext highlighter-rouge">false</code>，即跨域访问时，浏览器不会在请求中携带Cookie等安全信息。</p>
+
+<p>这是出于安全性的考虑，这样客户端可以避免Cookie等安全信息意外的泄漏给另一个域。</p>
+
+<p>但是有些服务是依赖这些安全信息的，就需要设置这个选项为<code class="language-plaintext highlighter-rouge">true</code>，同时还要满足上面的精确匹配要求，外加<code class="language-plaintext highlighter-rouge">Access-Control-Allow-Credentials: true</code>。</p>
+
+<h2 id="access-control-allow-credentials">Access-Control-Allow-Credentials</h2>
+
+<p>客户端可以控制安全信息的发送了，那么服务端是否想要呢？于是就有了<code class="language-plaintext highlighter-rouge">Access-Control-Allow-Credentials</code>头域。</p>
+
+<p>当客户端设置<code class="language-plaintext highlighter-rouge">withCredentials</code>等于<code class="language-plaintext highlighter-rouge">true</code>时，如果服务器不返回<code class="language-plaintext highlighter-rouge">Access-Control-Allow-Credentials: true</code>，请求就失败了。</p>
+
+<p>为了预判服务器是否支持CORS，浏览器会进行preflight：</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg" alt="" /></p>
+
+<h2 id="检查浏览器支持跨域">检查浏览器支持跨域</h2>
+
+<h2 id="case-by-case">Case by case</h2>
+
+<p>由于我是使用SockJS作为传输层，安全认证所需的信息协议层吗，所以我不需要客户端发送Cookie等安全信息。</p>
+
+<p>但是SockJS在跨域时，只要发现浏览器支持<code class="language-plaintext highlighter-rouge">withCredentials</code>就会设置为<code class="language-plaintext highlighter-rouge">true</code>。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">cors</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nx">cors</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">withCredentials</span><span class="dl">'</span> <span class="k">in</span> <span class="k">new</span> <span class="nx">XHR</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ignored</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="nx">AbstractXHRObject</span><span class="p">.</span><span class="nx">supportsCORS</span> <span class="o">=</span> <span class="nx">cors</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">((</span><span class="o">!</span><span class="nx">opts</span> <span class="o">||</span> <span class="o">!</span><span class="nx">opts</span><span class="p">.</span><span class="nx">noCredentials</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">AbstractXHRObject</span><span class="p">.</span><span class="nx">supportsCORS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>所以，我试着workaround了一下：</p>
+
+<h2 id="workaround">Workaround</h2>
+
+<p>加载SockJS前，shim XMLHttpRequest.send()，把withCredentials改为<code class="language-plaintext highlighter-rouge">false</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">shimmedXHR</span> <span class="o">=</span> <span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+    <span class="nx">send</span> <span class="o">=</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">;</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">send</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">})(</span><span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>加载SockJS后，再改回来：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">xhr</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">shimmedXHR</span> <span class="o">||</span> <span class="nx">xhr</span><span class="p">;</span>
+<span class="p">})(</span><span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>测试一下，可以跨域进行SockJS连接了。</p>

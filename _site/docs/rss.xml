@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>程序员笔记</title>
+        <link>https://harry-hao.github.io/blog/</link>
+        <description></description>
+        <generator>Hugo 0.62.2 https://gohugo.io/</generator>
+        
+            <language>zh-CN</language>
+        
+        
+        
+        
+            <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+        
+        <lastBuildDate>Fri, 27 Nov 2020 21:08:34 &#43;0800</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
+        
+        
+            <item>
+                <title>了解OAuth2.0</title>
+                <link>https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/</link>
+                <guid isPermaLink="true">https://harry-hao.github.io/blog/posts/2020-11-12_oauth2/</guid>
+                <pubDate>Thu, 12 Nov 2020 00:00:00 &#43;0000</pubDate>
+                
+                <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+                
+                    <description>&lt;blockquote&gt;
+&lt;p&gt;OAuth 2.0是一种认证授权工业标准，为多种应用（Web、桌面程序、手机、智能设备等）提供简单易安全的认证授权方法。
+&lt;a href=&#34;https://oauth.net/2/&#34;&gt;https://oauth.net/2/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安全问题，离不开信任关系：&lt;/p&gt;
+&lt;p&gt;举个例子，我们都知道银行卡的密码可以在柜员机输入。这是因为我们信任柜员机。&lt;/p&gt;
+&lt;p&gt;再举个例子，你去便利店买东西，用手机支付时，都会提示你输入密码。因为支付服务信任的是你，而不是你的手机。&lt;/p&gt;
+&lt;p&gt;我们从角色和授权流程两个方面入手，来看看OAuth 2.0。&lt;/p&gt;
+&lt;h3 id=&#34;角色&#34;&gt;角色&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Resource Owner&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Resource Owner&lt;/code&gt;是指资源的属主，一般是最终用户，有时候也可以是一台机器。比如你把钱存进银行，钱就是&lt;code&gt;Resource&lt;/code&gt;，而你就是&lt;code&gt;Resource Owner&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Resource Server&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Resource Server&lt;/code&gt;是指资源的托管者，其需要保证资源的安全性。你的银行就是&lt;code&gt;Resource Server&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Client&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Client&lt;/code&gt;指需要使用资源的应用，比如你的支付软件就是&lt;code&gt;Client&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Authorization Server&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Authorization Server&lt;/code&gt;指负责认证&lt;code&gt;Resource Owner&lt;/code&gt;身份和授权的实体。比如，你的银行就是&lt;code&gt;Authorization Server&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;OAuth 2.0的&lt;a href=&#34;https://tools.ietf.org/html/rfc6749#section-1.1&#34;&gt;角色&lt;/a&gt;划分明确了&lt;code&gt;Resource Owner&lt;/code&gt;与&lt;code&gt;Client&lt;/code&gt;的角色分离，有助于清晰定义信任关系。&lt;/p&gt;
+&lt;p&gt;角色之间的信任关系，取决于使用的&lt;a href=&#34;https://tools.ietf.org/html/rfc6749#section-4&#34;&gt;授权流程&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;授权流程&#34;&gt;授权流程&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Resource Owner Password Credentials Grant&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./password-grant.jpg&#34; alt=&#34;密码授权&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我们称这个授权流程为密码授权。&lt;/p&gt;
+&lt;p&gt;⚠️ 这个流程中，密码直接交给Client，有可能被泄漏，（&lt;a href=&#34;https://tools.ietf.org/html/rfc6819#section-4.4.3&#34;&gt;密码泄漏&lt;/a&gt;。
+因此，需要注意采用安全的传输方式，不使用明文传输密码，打印日志时进行脱敏等措施。&lt;/p&gt;
+&lt;p&gt;密码授权仅适用于不能使用其他授权的时候（比如不支持重定向）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Client Credentials Grant&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./client-credentials-grant.jpg&#34; alt=&#34;机要授权&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为了与密码区分，我们称其为机要授权流程。其中的&lt;code&gt;Client Credentials&lt;/code&gt;是在服务提供商处购买服务时，由服务提供商提供的。
+一般是指&lt;code&gt;Client Id&lt;/code&gt;与&lt;code&gt;Client Secret&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Client Credentials&lt;/code&gt;是机密信息需要安全保存，因此该流程一般常见于服务器使用。此时，服务器既是&lt;code&gt;Resource Owner&lt;/code&gt;又是&lt;code&gt;Client&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;⚠️ 其安全问题与密码认证类似。由于服务器是在受控的环境运行，相比密码授权安全一些，但也需要注意，比如&lt;strong&gt;不要&lt;/strong&gt;将机密信息明文的写到配置文件中，可以采用环境变量或加密等方式。如果万一泄漏了，应当立即重置。另外，有工具可以帮助检查泄漏，比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kootenpv/gittyleaks&#34;&gt;gittyleaks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/en/github/administering-a-repository/about-secret-scanning&#34;&gt;Github Secret Scanning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Authorization Code Grant&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./authorization-code-grant.jpg&#34; alt=&#34;授权码授权&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我们称其为授权码授权流程。这个流程没有直接把密码交给&lt;code&gt;Client&lt;/code&gt;，因此避免密码暴露给第三方Client。&lt;/p&gt;
+&lt;p&gt;⚠️ 由于code是通过url传递的,会在referrer头或其他方式被泄漏。&lt;a href=&#34;https://tools.ietf.org/html/rfc6819#section-4.4.1&#34;&gt;RFC 6819&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tools.ietf.org/html/draft-ietf-oauth-security-topics-16#section-4.2.4&#34;&gt;OAuth安全实践草案16&lt;/a&gt; 给出了一些反制措施：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Client通过&amp;quot;Referrer-Policy: no-referrer&amp;quot;抑制Referrer头&lt;/li&gt;
+&lt;li&gt;Authorization Server通过&lt;a href=&#34;https://tools.ietf.org/html/rfc7636&#34;&gt;PKCE&lt;/a&gt;验证Client，验证通过才发布&lt;code&gt;Access Token&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Authorization Server限制授权码只能兑换一次，重复兑换时撤销相关已发布的&lt;code&gt;Access Token&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;用返回&lt;a href=&#34;https://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html&#34;&gt;自动提交表单&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Implicit Grant&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./implicit-grant.jpg&#34; alt=&#34;隐式授权&#34;&gt;&lt;/p&gt;
+&lt;p&gt;由于在授权过程中没有验证&lt;code&gt;Client&lt;/code&gt;，我们称其为隐式授权。隐式授权本意是为了减少Client与Authorization Server的交互次数，但由于其安全问题没有好的对策，已经被认为是&lt;strong&gt;禁止&lt;/strong&gt;使用的。应当使用授权码授权。&lt;/p&gt;
+&lt;p&gt;⚠️ 隐式授权会造成Access Token泄漏，并且由于&lt;code&gt;Authentication Server&lt;/code&gt;没有验证&lt;code&gt;Client&lt;/code&gt;，无法限制&lt;code&gt;Access Token&lt;/code&gt;应用范围(&lt;a href=&#34;https://tools.ietf.org/html/draft-ietf-oauth-security-topics-16#section-4.9.1.1.2&#34;&gt;Sender-Constrained Access Tokens&lt;/a&gt;)。所以，隐式授权是&lt;strong&gt;禁止&lt;/strong&gt;使用的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;另外，为了支持交互受限设备，后续又增加了一个&lt;a href=&#34;https://tools.ietf.org/html/rfc8628&#34;&gt;Device Authorization Grant&lt;/a&gt;，本文就不介绍了。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;总结一下，OAuth 2.0 这4种授权流程在信任关系方面采取的手段：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;信任关系&lt;/th&gt;
+&lt;th&gt;密码授权&lt;/th&gt;
+&lt;th&gt;机要授权&lt;/th&gt;
+&lt;th&gt;授权码授权&lt;/th&gt;
+&lt;th&gt;隐式授权&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;RO&lt;/code&gt;信任&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;用户&lt;/td&gt;
+&lt;td&gt;管理员&lt;/td&gt;
+&lt;td&gt;用户&lt;/td&gt;
+&lt;td&gt;用户&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;C&lt;/code&gt;信任&lt;code&gt;AS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AS&lt;/code&gt;信任&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Client Credentials&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Client Credentials&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Client Credentials&lt;/code&gt;+&lt;code&gt;PKCE&lt;/code&gt;+检查重定向地址&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;C&lt;/code&gt;信任&lt;code&gt;RS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https&lt;/code&gt;+&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;RS&lt;/code&gt;信任&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Access Token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Access Token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Access Token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;sub&gt;RO = Resource Owner&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;&lt;sub&gt;C = Client&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;&lt;sub&gt;AS = Authorization Server&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;&lt;sub&gt;RS = Resource Server&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安全问题是一场持续进行的竞赛，没有一劳永逸的方案。并且，人的安全意识也非常重要，技术和机器无法解决全部问题。&lt;/p&gt;
+&lt;p&gt;附上笑话一枚：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://imgs.xkcd.com/comics/exploits_of_a_mom.png&#34; alt=&#34;exploits_of_a_mom&#34;&gt;
+&lt;sub&gt;图片来自：https://xkcd.com/327/&lt;/sub&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/oauth-2.0/">oauth 2.0</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/security/">security</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>模型的边界</title>
+                <link>https://harry-hao.github.io/blog/posts/2020-06-29_boundary-of-models/</link>
+                <guid isPermaLink="true">https://harry-hao.github.io/blog/posts/2020-06-29_boundary-of-models/</guid>
+                <pubDate>Tue, 30 Jun 2020 10:00:00 &#43;0800</pubDate>
+                
+                <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+                
+                    <description>&lt;blockquote&gt;
+&lt;p&gt;本文基于多模块系统讨论，不适用于单模块系统。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;特定的模型只需要关注特定的业务问题，因此应该呆在模块内。但是现实中，有时模型会穿越边界进入另一个模块，并带来问题。&lt;/p&gt;
+&lt;p&gt;假设我们在开发一个网上商店，首先，为了实现身份认证，我们创建了User类，用于认证身份，其API形如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;UserController&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;authenticate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此时，直接返回User已经埋下了问题，我们继续看。&lt;/p&gt;
+&lt;p&gt;为了让用户能够买东西，我们需要向User（调用身份认证API获得）添加了充值和结算功能。&lt;/p&gt;
+&lt;p&gt;为了提高购买体验，我们再次向User添加一些统计功能。&lt;/p&gt;
+&lt;p&gt;接下来，我们发现模型都是通用的依赖，将其放入一个公共模块，称为模型模块给业务模块直接使用。&lt;/p&gt;
+&lt;p&gt;随着开发，更多的功能被加到User，每次都需要修改认证服务（User是认证服务提供的），这很不方便，于是改为各个模块直接访问数据库，并继续添加功能直到出现下面的问题。&lt;/p&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;问题1 修改Schema困难&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当我们需要删除或者修改User的功能时，我们发现必须先更新所有依赖模块后才能更新，否则未更新的模块无法存取相应的表。然而，由于模型是一个公共模块，我们需要查看每个业务模块后，才能确定修改计划。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题2 安全隐患&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;每个依赖User的模块都能看到User全部数据。这可能出现安全漏洞，比如，某个模块把User的密码打印到日志里。为此，向模型添加敏感信息时，需要检查所有依赖模块的代码，防止泄漏。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题3 事故放大&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;模型一般都需要持久化，这些数据存储在一起的，可能造成事故的放大。比如，一个模块异常删除了User数据，那么所有使用User的功能受到到影响。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题4 意外修改&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;修改模型时，如果不注意本模块是否拥有相关部分，很可能会破坏其他模块。并且，有时候这种修改是基于条件触发的，使得这种问题较难排查。然后，即使本模块拥有修改的部分，也不能保证没有其他模块依赖。
+因此，修改模型时，需要先分析修改范围是否属于本模块，之后再查看所有模块是否依赖现有实现。&lt;/p&gt;
+&lt;p&gt;由于以上问题，我们对模型开始只加不删，轻易不动已有功能...&lt;/p&gt;
+&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;
+&lt;p&gt;究其原因，我们发现根源在于认证API返回了User。这使得模型穿越边界变成可能（依赖认证模块并直接使用User）。之后，公共模块的做法降低了穿越的难度（依赖该公共模块）。最后，共享数据库彻底卸下了边界，使得模型能够被任意模块存取。&lt;/p&gt;
+&lt;p&gt;三步操作后，模型成了各个模块的共享内核，任何对内核的改动都会变得困难。并且这种共享内核，如果由多个团队维护，很可能变成没人维护任其发展。&lt;/p&gt;
+&lt;h2 id=&#34;解决&#34;&gt;解决&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;overlapped-models.png&#34; alt=&#34;overlapped-models.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;理想的解决方案是恢复模型的边界。每个模块应当有专门的关注点，其模型亦如此。&lt;/p&gt;
+&lt;p&gt;首先，可以逐步将User拆分到各自的模块中。过程中如果发现拆不开的，有两种办法，如果是模块划分问题，可以调整模块划分。如果不是，则需要选择一个模块拥有该模型，在另一个模块的模型中通过引用该模型ID或内联（复制）所需的部分。&lt;/p&gt;
+&lt;p&gt;拆分完成后，检查提供API的地方，确保模型没有出现在请求响应中，如果有则需要更新API。&lt;/p&gt;
+&lt;p&gt;最后，消费外部API时，确保外部模型没有直接进入，如果有则先将其翻译成本地模型。这一步是一种防御机制，用来防御外部API变化造成破坏。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">软件开发</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/model/">model</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/design/">design</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://harry-hao.github.io/blog/tags/skill/">skill</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+    </channel>
+</rss>

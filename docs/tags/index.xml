@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
-    <lastBuildDate>Thu, 12 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harry-hao.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SockJS</title>
+      <link>https://harry-hao.github.io/blog/tags/sockjs/</link>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://harry-hao.github.io/blog/tags/sockjs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XHR</title>
+      <link>https://harry-hao.github.io/blog/tags/xhr/</link>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://harry-hao.github.io/blog/tags/xhr/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>oauth 2.0</title>
