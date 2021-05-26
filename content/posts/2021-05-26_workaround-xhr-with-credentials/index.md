@@ -13,19 +13,29 @@ draft: false
 
 `Failed to load resource: Cannot use wildcard in Access-Control-Allow-Origin when credentials flag is true.`
 
-搜索发现，浏览器要求当XHR请求指定了`withCredentials`等于`true`时，
+搜索发现这是一个浏览器阻止不安全的跨域访问的问题，我们来靠一下古：
 
-而服务端返回的`Access-Control-Allow-Orgin`必须是精确匹配。否则不允许页面获取该资源。
+1993年，互联网正在高速发展，`<img>`这个标签被加入进来。
 
-这里的精确匹配是指协议、域名、端口全部都匹配（在服务端返回的`Access-Control-Allow-Orgin`中）。
+从那开始，网页变得漂亮多了。随着越来越多的标签也都加入进来，比如`<script>`。
+
+那时候，网站之间可以随便访问，很容易发生跨站攻击，于是就有了CORS。
+
+考古完成，下面开始干活。我们看看今天的这个问题:
 
 ## XMLHttpRequest.withCredentials
 
-这个选项默认为`false`，即跨域访问时，浏览器不会在请求中携带Cookie等安全信息。
+一番搜索发现，选项默认为`false`，浏览器跨域访问时，如果要携带Cookie等安全信息，就要设置这个选项为`true`。
 
 这是出于安全性的考虑，这样客户端可以避免Cookie等安全信息意外的泄漏给另一个域。
 
-但是有些服务是依赖这些安全信息的，就需要设置这个选项为`true`，同时还要满足上面的精确匹配要求，外加`Access-Control-Allow-Credentials: true`。
+如果服务依赖Cookie等安全信息，就要满足：
+
+- `XMLHttpRequest.withCredentials`为`true`
+- `Access-Control-Allow-Origin`精确匹配（这里的精确匹配是指协议、域名、端口全部都匹配）
+- `Access-Control-Allow-Credentials`为`true`
+
+`Access-Control-Allow-Origin`相信大家都很熟悉了，我们还是看看`Access-Control-Allow-Credentials`是干什么的：
 
 ## Access-Control-Allow-Credentials
 
@@ -37,8 +47,7 @@ draft: false
 
 ![](https://upload.wikimedia.org/wikipedia/commons/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg)
 
-## 检查浏览器支持跨域
-
+那么，今天的问题怎么处理呢？
 
 ## Case by case
 
@@ -87,3 +96,4 @@ if ((!opts || !opts.noCredentials) && AbstractXHRObject.supportsCORS) {
 ```
 
 测试一下，可以跨域进行SockJS连接了。
+
