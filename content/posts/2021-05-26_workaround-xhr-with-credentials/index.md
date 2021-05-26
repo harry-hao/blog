@@ -9,7 +9,7 @@ tags:
 draft: false
 ---
 
-我们在使用SockJS作为传输层时，遇到浏览器对跨域请求报错：
+今天在用SockJS时，遇到浏览器对跨域请求报错：
 
 `Failed to load resource: Cannot use wildcard in Access-Control-Allow-Origin when credentials flag is true.`
 

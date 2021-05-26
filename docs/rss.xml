@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
         
-        <lastBuildDate>Thu, 27 May 2021 01:57:14 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 27 May 2021 01:58:37 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://harry-hao.github.io/blog/rss.xml" />
         
@@ -32,7 +32,7 @@
                 
                 <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
                 
-                    <description>&lt;p&gt;我们在使用SockJS作为传输层时，遇到浏览器对跨域请求报错：&lt;/p&gt;
+                    <description>&lt;p&gt;今天在用SockJS时，遇到浏览器对跨域请求报错：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Failed to load resource: Cannot use wildcard in Access-Control-Allow-Origin when credentials flag is true.&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;搜索发现这是一个浏览器阻止不安全的跨域访问的问题，我们来靠一下古：&lt;/p&gt;
 &lt;p&gt;1993年，互联网正在高速发展，&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;这个标签被加入进来。&lt;/p&gt;
