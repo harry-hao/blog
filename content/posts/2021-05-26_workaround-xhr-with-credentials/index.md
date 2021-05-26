@@ -13,7 +13,7 @@ draft: false
 
 `Failed to load resource: Cannot use wildcard in Access-Control-Allow-Origin when credentials flag is true.`
 
-搜索发现这是一个浏览器阻止不安全的跨域访问的问题，我们来靠一下古：
+搜索发现这是一个浏览器阻止不安全的跨域访问的问题，我们来考一下古：
 
 1993年，互联网正在高速发展，`<img>`这个标签被加入进来。
 

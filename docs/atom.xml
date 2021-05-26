@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">程序员笔记</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-05-27T01:58:37&#43;08:00</updated>
+    <updated>2021-05-27T01:59:20&#43;08:00</updated>
     <id>https://harry-hao.github.io/blog/</id>
     <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/" />
     <link rel="self" type="application/atom&#43;xml" href="https://harry-hao.github.io/blog/atom.xml" />
@@ -15,7 +15,7 @@
             <title type="text">XMLHttpRequest CORS 考古</title>
             <link rel="alternate" type="text/html" href="https://harry-hao.github.io/blog/posts/2021-05-26_workaround-xhr-with-credentials/" />
             <id>https://harry-hao.github.io/blog/posts/2021-05-26_workaround-xhr-with-credentials/</id>
-            <updated>2021-05-27T01:58:29&#43;08:00</updated>
+            <updated>2021-05-27T01:59:11&#43;08:00</updated>
             <published>2021-05-26T00:00:00&#43;00:00</published>
             <author>
                     <uri>https://harry-hao.github.io/blog/</uri>
@@ -24,7 +24,7 @@
             
                 <content type="html">&lt;p&gt;今天在用SockJS时，遇到浏览器对跨域请求报错：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Failed to load resource: Cannot use wildcard in Access-Control-Allow-Origin when credentials flag is true.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;搜索发现这是一个浏览器阻止不安全的跨域访问的问题，我们来靠一下古：&lt;/p&gt;
+&lt;p&gt;搜索发现这是一个浏览器阻止不安全的跨域访问的问题，我们来考一下古：&lt;/p&gt;
 &lt;p&gt;1993年，互联网正在高速发展，&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;这个标签被加入进来。&lt;/p&gt;
 &lt;p&gt;从那开始，网页变得漂亮多了。随着越来越多的标签也都加入进来，比如&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;那时候，网站之间可以随便访问，很容易发生跨站攻击，于是就有了CORS。&lt;/p&gt;
